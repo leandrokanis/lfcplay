@@ -6,7 +6,7 @@ require 'date'
 
 def default_club()
 	# Liverpool id is 64
-	return club_id = 64
+	return club_id = 81
 end
 
 def connect_to_api(url_complement)
@@ -108,21 +108,15 @@ end
 def when_will_default_team_play
 	weekday_name = ["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"]
 	wday_number = get_next_match_date().wday
-
 	days = how_many_days_until_next_match
 
-	case days
-	when 0
-		description = "Hoje"
-	when 1
-		description = "Amanhã"
-	when 2..6	
-		description = weekday_name[wday_number]
-	when 7..14
-		description = "Semana que vem"
-	else "Daqui " + (days/7).to_s + " semanas"
+	description = case days
+		when 0 then "Hoje"
+		when 1 then "Amanhã"
+		when 2..6 then weekday_name[wday_number]
+		when 7..14 then "Semana que vem"
+		else "Daqui " + (days/7).to_s + " semanas"
 	end
-
 
 	return description
 end
