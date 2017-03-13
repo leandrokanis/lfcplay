@@ -1,3 +1,7 @@
+class TeamController < ApplicationController
+  def index
+  end
+
 require 'net/http'
 require 'uri'
 require 'json'
@@ -6,7 +10,7 @@ require 'date'
 
 def default_club()
 	# Liverpool id is 64
-	return club_id = 81
+	return club_id = 64
 end
 
 def connect_to_api(url_complement)
@@ -93,6 +97,11 @@ def get_next_match_date()
 	return DateTime.parse(match.date).to_date
 end
 
+def get_next_match_time()
+	match = get_next_match()
+	return DateTime.parse(match.date).strftime("%H:%M")
+end
+
 def does_default_team_play_today()
 	if get_next_match_date == Date.today
 		return true
@@ -119,4 +128,7 @@ def when_will_default_team_play
 	end
 
 	return description
+	helper_method :when_will_default_team_play
+end
+
 end
