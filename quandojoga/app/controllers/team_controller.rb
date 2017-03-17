@@ -85,7 +85,7 @@ def create_team(team_id)
 end
 
 def create_default_team()
-	return create_team(defaul_club)
+	return create_team(default_club)
 end
 
 def create_opponent()

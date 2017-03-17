@@ -1,15 +1,18 @@
+<% @team = @_controller %>
+
 
     <!-- Header -->
     <header id="top" class="header">
         <div class="text-vertical-center">
-            <h3 class="text-white">Quando o Liverpool Joga?</h3>
-            <h1 class="text-white"><%= @_controller.when_will_default_team_play()%></h1>
+        <img class="team-shield" src="<%= @team.create_default_team().crestUrl %>" alt="">
+            <h3 class="text-white">Quando o <%= @team.create_default_team().shortName %> Joga?</h3>
+            <h1 class="text-white"><%= @team.when_will_default_team_play()%></h1>
             <br>
 
-<p><%= @_controller.get_next_match_date().strftime('%d de %b')%></p>
-<p><%= @_controller.get_next_match_time() %></p>
+<p><%= @team.get_next_match_date().strftime('%d de %b')%></p>
+<p><%= @team.get_next_match_time() %></p>
 <p></p>
-<p><%= @_controller.get_next_match().homeTeamName %> x <%= @_controller.get_next_match().awayTeamName %> </p>
+<p><%= @team.get_next_match().homeTeamName %> X <%= @team.get_next_match().awayTeamName %> </p>
 
             <a href="#about" class="btn btn-dark btn-lg">Veja tabela completa</a>
         </div>
